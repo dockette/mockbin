@@ -46,6 +46,11 @@ You can easily setup Mockbin via environment variables. This is list of default 
 - MOCKBIN_REDIS=redis://redis:6379
 ```
 
+## Versions
+
+The release version is the date in [`VERSION`](VERSION). CI pushes `latest` also as `dockette/mockbin:<VERSION>`.
+To release, run `make release`, commit and push to `master`.
+
 ## Development
 
 See [how to contribute](https://contributte.org/contributing.html) to this package.

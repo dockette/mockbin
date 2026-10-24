@@ -1,4 +1,5 @@
 DOCKER_IMAGE=dockette/mockbin
+VERSION:=$(shell cat VERSION)
 
 docker-build:
 	docker build --pull -t ${DOCKER_IMAGE} .
@@ -11,3 +12,13 @@ test-up:
 
 test-in:
 	docker-compose exec mockbin bash
+
+.PHONY: version
+version:
+	@echo ${VERSION}
+
+.PHONY: release
+release:
+	@date -u +%Y.%m.%d > VERSION
+	@echo "VERSION: ${VERSION} -> $$(cat VERSION)"
+	@echo "next: git commit -am \"Release: $$(cat VERSION)\" && git push"
